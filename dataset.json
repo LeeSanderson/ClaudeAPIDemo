@@ -1,11 +1,14 @@
 [
   {
-    "task": "Write a Python function that takes an S3 bucket ARN and extracts just the bucket name from it. The function should handle ARNs in the format 'arn:aws:s3:::bucket-name' or 'arn:aws:s3:::bucket-name/key'."
+    "task": "Write a Python function that parses an AWS ARN string and returns a dictionary with its components (partition, service, region, account-id, and resource). For example, 'arn:aws:s3:us-east-1:123456789012:bucket/my-bucket' should return the parsed components.",
+    "format": "python"
   },
   {
-    "task": "Create a JSON object representing an AWS Lambda function's environment variables configuration that includes: database endpoint 'prod-db.us-east-1.rds.amazonaws.com', connection timeout of 30 seconds, and log level set to 'INFO'."
+    "task": "Create a JSON object representing an AWS IAM policy that allows read-only access to a specific S3 bucket named 'company-logs'. The policy should include permissions for s3:GetObject and s3:ListBucket actions.",
+    "format": "json"
   },
   {
-    "task": "Write a regular expression that validates AWS IAM role names according to AWS naming rules: 1-64 characters long, can contain alphanumeric characters, underscores, plus signs, equals signs, commas, periods, at signs, and hyphens."
+    "task": "Write a regular expression that validates AWS Access Key IDs, which start with 'AKIA' or 'ASIA' followed by exactly 16 alphanumeric characters (uppercase letters and numbers only).",
+    "format": "regex"
   }
 ]
