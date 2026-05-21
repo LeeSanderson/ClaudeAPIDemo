@@ -1,14 +1,17 @@
 [
   {
-    "task": "Write a Python function that parses an AWS ARN string and returns a dictionary with its components (partition, service, region, account-id, and resource). For example, 'arn:aws:s3:us-east-1:123456789012:bucket/my-bucket' should return the parsed components.",
-    "format": "python"
+    "task": "Write a Python function that takes an AWS ARN string and extracts the resource type. For example, 'arn:aws:ec2:us-east-1:123456789012:instance/i-1234567890abcdef0' should return 'instance'.",
+    "format": "python",
+    "solution_criteria": "Function should correctly parse standard AWS ARN format (arn:partition:service:region:account-id:resource-type/resource-id or arn:partition:service:region:account-id:resource-type:resource-id). Should handle ARNs with colons and slashes as separators. Should handle edge cases like ARNs without resource IDs, ARNs with multiple colons in resource section. Should return None or raise appropriate error for invalid ARNs."
   },
   {
-    "task": "Create a JSON object representing an AWS IAM policy that allows read-only access to a specific S3 bucket named 'company-logs'. The policy should include permissions for s3:GetObject and s3:ListBucket actions.",
-    "format": "json"
+    "task": "Create a JSON object representing an AWS IAM policy that allows read-only access to a specific S3 bucket named 'company-logs'. The policy should allow ListBucket and GetObject actions only.",
+    "format": "json",
+    "solution_criteria": "JSON must be valid IAM policy syntax with Version, Statement array. Statement should have Effect: 'Allow', Action array containing s3:ListBucket and s3:GetObject, and Resource specifying the bucket ARN (arn:aws:s3:::company-logs) and objects (arn:aws:s3:::company-logs/*). Should use correct ARN format. ListBucket should apply to bucket resource, GetObject should apply to objects within bucket."
   },
   {
-    "task": "Write a regular expression that validates AWS Access Key IDs, which start with 'AKIA' or 'ASIA' followed by exactly 16 alphanumeric characters (uppercase letters and numbers only).",
-    "format": "regex"
+    "task": "Write a regular expression that validates AWS Access Key IDs. AWS Access Key IDs are exactly 20 characters long and consist of uppercase letters A-Z and numbers 2-7, always starting with 'AKIA' for standard IAM user keys.",
+    "format": "regex",
+    "solution_criteria": "Regex must match strings that start with 'AKIA' followed by exactly 16 characters from the set [A-Z0-9]. Total length must be exactly 20 characters. Should not match strings shorter or longer than 20 characters. Should not match if prefix is not 'AKIA'. Should not match if contains lowercase letters or special characters. Should use anchors to ensure full string match."
   }
 ]
