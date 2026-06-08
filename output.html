@@ -1,0 +1,300 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .summary-stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .stat-box {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                flex-basis: 30%;
+                min-width: 200px;
+            }
+            .stat-value {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th {
+                background-color: #4a4a4a;
+                color: white;
+                text-align: left;
+                padding: 12px;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: top;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .output-cell {
+                white-space: pre-wrap;
+            }
+            .score {
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+            .score-high {
+                background-color: #c8e6c9;
+                color: #2e7d32;
+            }
+            .score-medium {
+                background-color: #fff9c4;
+                color: #f57f17;
+            }
+            .score-low {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+            .output {
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+
+            .output pre {
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 0;
+                font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                font-size: 14px;
+                line-height: 1.4;
+                color: #333;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre-wrap; 
+                word-wrap: break-word; 
+            }
+
+            td {
+                width: 20%;
+            }
+            .score-col {
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box">
+                    <div>Total Test Cases</div>
+                    <div class="stat-value">5</div>
+                </div>
+                <div class="stat-box">
+                    <div>Average Score</div>
+                    <div class="stat-value">6.6 / 10</div>
+                </div>
+                <div class="stat-box">
+                    <div>Pass Rate (≥7)</div>
+                    <div class="stat-value">40.0%</div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Prompt Inputs</th>
+                    <th>Solution Criteria</th>
+                    <th>Output</th>
+                    <th>Score</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Testing with a brief, single-topic passage to verify the prompt handles minimal input and returns appropriately sized output</td>
+                <td class="prompt-inputs"><strong>content:</strong> This study examines the role of mitochondrial dysfunction in neurodegenerative disease progression. Mitochondria are essential cellular organelles responsible for ATP production through oxidative phosphorylation. Impaired mitochondrial function leads to reduced energy availability and increased reactive oxygen species generation, both of which contribute to neuronal death in conditions such as Parkinson's disease and Alzheimer's disease.</td>
+                <td class="criteria">• Output is a JSON array of strings<br>• Array contains exactly one or two topics (reflecting the single-topic nature of the passage)<br>• Topics extracted are relevant to the passage content</td>
+                <td class="output"><pre>```json
+[
+  "Mitochondrial dysfunction",
+  "Neurodegenerative disease",
+  "Mitochondria",
+  "ATP production",
+  "Oxidative phosphorylation",
+  "Energy metabolism",
+  "Reactive oxygen species",
+  "Neuronal death",
+  "Parkinson's disease",
+  "Alzheimer's disease",
+  "Cellular organelles",
+  "Oxidative stress"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-low">3</span></td>
+                <td class="reasoning">The solution meets the mandatory requirement of being a JSON array of strings with clean topic formatting and no extra commentary. However, it critically fails the secondary criterion requiring 'exactly one or two topics (reflecting the single-topic nature of the passage).' The passage has a clear primary focus on mitochondrial dysfunction in neurodegenerative disease, which should be represented by 1-2 main topics, not 12. The solution extracts granular subtopics and mechanisms rather than identifying the core themes. This represents a fundamental misunderstanding of the task's intent to extract high-level topics rather than enumerate all mentioned concepts.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a highly technical STEM passage containing jargon, acronyms, and specialized terminology to ensure domain-specific concepts are correctly identified as distinct topics</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent advances in CRISPR-Cas9 gene editing have demonstrated remarkable efficacy in treating monogenic disorders through precise DNA strand breaks at target loci. The mechanism involves sgRNA-guided nuclease activity that generates double-strand breaks (DSBs), subsequently repaired via non-homologous end joining (NHEJ) or homology-directed repair (HDR) pathways. Off-target effects remain a critical limitation, with whole-genome sequencing analyses revealing unintended mutations at genomic regions with high sequence homology. Novel PAM variants and high-fidelity Cas9 variants (eSpCas9, SpCas9-HF1) have improved specificity metrics, while base editing and prime editing approaches circumvent DSB formation entirely. Clinical applications in β-thalassemia and sickle cell disease show promising results, though immunogenicity concerns regarding adeno-associated virus (AAV) delivery vectors and the need for ex vivo lymphocyte engineering complicate therapeutic translation.</td>
+                <td class="criteria">• Extracts all major domain-specific concepts including CRISPR-Cas9, gene editing mechanisms (NHEJ, HDR), technical variants (eSpCas9, SpCas9-HF1, base editing, prime editing), and clinical applications as distinct topics<br>• Recognizes and separates specialized terminology (sgRNA, PAM, DSBs, off-target effects, immunogenicity) as relevant topics<br>• Returns output as a JSON array of strings with no extraneous fields or explanatory text</td>
+                <td class="output"><pre>```json
+[
+  "CRISPR-Cas9 gene editing",
+  "Monogenic disorders",
+  "DNA strand breaks",
+  "sgRNA-guided nuclease activity",
+  "Double-strand breaks (DSBs)",
+  "Non-homologous end joining (NHEJ)",
+  "Homology-directed repair (HDR)",
+  "Off-target effects",
+  "Whole-genome sequencing",
+  "Sequence homology",
+  "PAM variants",
+  "High-fidelity Cas9 variants",
+  "eSpCas9",
+  "SpCas9-HF1",
+  "Base editing",
+  "Prime editing",
+  "β-thalassemia",
+  "Sickle cell disease",
+  "Immunogenicity",
+  "Adeno-associated virus (AAV) vectors",
+  "Ex vivo lymphocyte engineering",
+  "Gene therapy delivery",
+  "Therapeutic translation",
+  "Specificity in gene editing"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it provides a valid JSON array of strings with no extraneous fields or explanatory text. It successfully extracts all major domain-specific concepts and specialized terminology from the passage. The two inferred topics ('Gene therapy delivery' and 'Specificity in gene editing') are minor deviations from strict extraction, as the task asks to 'extract topics out of a passage' which typically implies direct extraction rather than inference. However, these additions are reasonable interpretations of concepts discussed in the text and don't significantly detract from the overall quality. The solution demonstrates strong understanding of the domain and provides comprehensive coverage of the scholarly content.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a humanities passage containing overlapping themes (e.g., history, politics, culture) to verify accurate topic extraction without over-segmentation</td>
+                <td class="prompt-inputs"><strong>content:</strong> The Renaissance witnessed a profound transformation in European intellectual and artistic life, as humanist scholars recovered classical texts that fundamentally challenged medieval theological frameworks. This cultural revival, originating in Italy during the fourteenth century, became intertwined with emerging nation-states' political ambitions, as patronage of the arts served as both a display of power and a mechanism for legitimizing new forms of governance. The spread of printing technology democratized access to knowledge, enabling the circulation of ideas that would later fuel religious reformation and scientific inquiry, while simultaneously creating tensions between traditional ecclesiastical authority and secular intellectual movements that reshaped European society through the seventeenth century.</td>
+                <td class="criteria">• Extracts all major topics without redundant duplication (e.g., 'Renaissance' and 'cultural revival' should not both appear as separate topics)<br>• Identifies distinct themes across humanities domains (intellectual, artistic, political, technological, religious) without over-segmenting related concepts<br>• Returns output as a valid JSON array of strings</td>
+                <td class="output"><pre>```json
+[
+  "Renaissance",
+  "Humanism",
+  "Classical texts",
+  "Medieval theology",
+  "Italian cultural revival",
+  "Fourteenth century",
+  "Nation-states",
+  "Political patronage",
+  "Arts patronage",
+  "Political power",
+  "Governance legitimization",
+  "Printing technology",
+  "Knowledge democratization",
+  "Intellectual circulation",
+  "Religious reformation",
+  "Scientific inquiry",
+  "Ecclesiastical authority",
+  "Secular intellectual movements",
+  "European society transformation",
+  "Seventeenth century"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-medium">6</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the passage with no extra commentary. However, it violates the secondary criterion about avoiding redundant duplication. The criteria explicitly state that related concepts should not both appear as separate topics (using 'Renaissance' and 'cultural revival' as an example). The solution includes several pairs of closely related concepts that should have been consolidated: patronage concepts, power/governance concepts, and knowledge circulation concepts. While the solution demonstrates good topical coverage, the redundancy issues prevent it from fully meeting the secondary criteria regarding non-duplication and appropriate segmentation.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a multi-disciplinary passage that spans social science, economics, and policy to assess how the prompt handles topics that cross traditional academic boundaries</td>
+                <td class="prompt-inputs"><strong>content:</strong> The rise of the gig economy has created significant challenges for traditional labor policy frameworks, as independent contractors operating through digital platforms generate substantial economic value while existing outside conventional employment relationships. Economists debate whether gig work represents genuine entrepreneurial opportunity or labor market fragmentation, with implications for income inequality, social safety nets, and tax revenue collection. Meanwhile, policymakers face pressure to balance worker protections—including minimum wage guarantees, benefits access, and workplace safety standards—against platform companies' arguments that regulatory burdens would reduce flexibility and competitiveness. Recent studies reveal that gig workers earn 20-30% less than traditional employees in comparable roles, yet often report higher job satisfaction due to autonomy. This tension between economic efficiency and social welfare reflects broader questions about the role of government in regulating emerging business models and protecting vulnerable populations in post-industrial economies.</td>
+                <td class="criteria">• Identifies all major topics spanning labor economics, policy, and platform business models<br>• Distinguishes between related but distinct concepts (e.g., gig economy as separate from income inequality)<br>• Returns output as a valid JSON array of strings</td>
+                <td class="output"><pre>```json
+[
+  "Gig economy",
+  "Digital platforms",
+  "Independent contractors",
+  "Labor policy",
+  "Employment relationships",
+  "Entrepreneurial opportunity",
+  "Labor market fragmentation",
+  "Income inequality",
+  "Social safety nets",
+  "Tax revenue collection",
+  "Worker protections",
+  "Minimum wage guarantees",
+  "Benefits access",
+  "Workplace safety standards",
+  "Job flexibility",
+  "Regulatory burden",
+  "Platform companies",
+  "Gig worker earnings",
+  "Job satisfaction",
+  "Autonomy",
+  "Economic efficiency",
+  "Social welfare",
+  "Government regulation",
+  "Post-industrial economies",
+  "Vulnerable populations"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it is a valid JSON array containing only strings with topics, no extra commentary, and nothing else in the response. It comprehensively identifies major topics spanning the three required domains (labor economics, policy, platform business models) and effectively distinguishes between related concepts. The extraction is thorough and well-organized. While a few entries are slightly more descriptive than purely topical, this is a minor issue that does not violate any stated criteria and reflects reasonable interpretive choices about what constitutes a 'topic' in the passage.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a passage containing implicit vs explicit topics to verify the prompt distinguishes between directly stated topics and underlying conceptual themes</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent advances in machine learning have revolutionized natural language processing, enabling systems to understand context and nuance in ways previously thought impossible. While transformer architectures explicitly dominate current research, the underlying principles of attention mechanisms and distributed representations reflect deeper insights into how information can be encoded computationally. The proliferation of large language models has sparked debate about data privacy, environmental costs of training, and the societal implications of automating cognitive tasks—concerns that permeate contemporary AI ethics discussions without always being directly articulated in technical papers.</td>
+                <td class="criteria">• Extracts explicit topics directly mentioned in the passage (e.g., 'machine learning', 'natural language processing', 'transformer architectures')<br>• Distinguishes between explicit topics and implicit conceptual themes (e.g., recognizes 'attention mechanisms' and 'distributed representations' as underlying concepts rather than primary topics)<br>• Returns results as a valid JSON array of strings<br>• Avoids conflating implicit themes with explicit topics in the final extraction</td>
+                <td class="output"><pre>```json
+[
+  "Machine learning",
+  "Natural language processing",
+  "Transformer architectures",
+  "Attention mechanisms",
+  "Distributed representations",
+  "Large language models",
+  "Data privacy",
+  "Environmental costs",
+  "AI training",
+  "Automation of cognitive tasks",
+  "AI ethics",
+  "Information encoding",
+  "Computational linguistics"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-medium">6</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it is a valid JSON array of strings with only topic names and no extra commentary. However, it violates the secondary criterion requiring distinction between explicit topics and implicit conceptual themes. The passage explicitly mentions machine learning, NLP, transformer architectures, attention mechanisms, distributed representations, large language models, data privacy, environmental costs, and AI ethics. Items like 'Computational linguistics,' 'Information encoding,' and 'AI training' are either inferred or mentioned only incidentally rather than as primary topics. The solution over-extracts by treating implicit themes and passing references as explicit topics.</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    

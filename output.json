@@ -1,0 +1,88 @@
+[
+  {
+    "output": "```json\n[\n  \"Mitochondrial dysfunction\",\n  \"Neurodegenerative disease\",\n  \"Mitochondria\",\n  \"ATP production\",\n  \"Oxidative phosphorylation\",\n  \"Energy metabolism\",\n  \"Reactive oxygen species\",\n  \"Neuronal death\",\n  \"Parkinson's disease\",\n  \"Alzheimer's disease\",\n  \"Cellular organelles\",\n  \"Oxidative stress\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "This study examines the role of mitochondrial dysfunction in neurodegenerative disease progression. Mitochondria are essential cellular organelles responsible for ATP production through oxidative phosphorylation. Impaired mitochondrial function leads to reduced energy availability and increased reactive oxygen species generation, both of which contribute to neuronal death in conditions such as Parkinson's disease and Alzheimer's disease."
+      },
+      "solution_criteria": [
+        "Output is a JSON array of strings",
+        "Array contains exactly one or two topics (reflecting the single-topic nature of the passage)",
+        "Topics extracted are relevant to the passage content"
+      ],
+      "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+      "scenario": "Testing with a brief, single-topic passage to verify the prompt handles minimal input and returns appropriately sized output"
+    },
+    "score": 3,
+    "reasoning": "The solution meets the mandatory requirement of being a JSON array of strings with clean topic formatting and no extra commentary. However, it critically fails the secondary criterion requiring 'exactly one or two topics (reflecting the single-topic nature of the passage).' The passage has a clear primary focus on mitochondrial dysfunction in neurodegenerative disease, which should be represented by 1-2 main topics, not 12. The solution extracts granular subtopics and mechanisms rather than identifying the core themes. This represents a fundamental misunderstanding of the task's intent to extract high-level topics rather than enumerate all mentioned concepts."
+  },
+  {
+    "output": "```json\n[\n  \"CRISPR-Cas9 gene editing\",\n  \"Monogenic disorders\",\n  \"DNA strand breaks\",\n  \"sgRNA-guided nuclease activity\",\n  \"Double-strand breaks (DSBs)\",\n  \"Non-homologous end joining (NHEJ)\",\n  \"Homology-directed repair (HDR)\",\n  \"Off-target effects\",\n  \"Whole-genome sequencing\",\n  \"Sequence homology\",\n  \"PAM variants\",\n  \"High-fidelity Cas9 variants\",\n  \"eSpCas9\",\n  \"SpCas9-HF1\",\n  \"Base editing\",\n  \"Prime editing\",\n  \"\u03b2-thalassemia\",\n  \"Sickle cell disease\",\n  \"Immunogenicity\",\n  \"Adeno-associated virus (AAV) vectors\",\n  \"Ex vivo lymphocyte engineering\",\n  \"Gene therapy delivery\",\n  \"Therapeutic translation\",\n  \"Specificity in gene editing\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "Recent advances in CRISPR-Cas9 gene editing have demonstrated remarkable efficacy in treating monogenic disorders through precise DNA strand breaks at target loci. The mechanism involves sgRNA-guided nuclease activity that generates double-strand breaks (DSBs), subsequently repaired via non-homologous end joining (NHEJ) or homology-directed repair (HDR) pathways. Off-target effects remain a critical limitation, with whole-genome sequencing analyses revealing unintended mutations at genomic regions with high sequence homology. Novel PAM variants and high-fidelity Cas9 variants (eSpCas9, SpCas9-HF1) have improved specificity metrics, while base editing and prime editing approaches circumvent DSB formation entirely. Clinical applications in \u03b2-thalassemia and sickle cell disease show promising results, though immunogenicity concerns regarding adeno-associated virus (AAV) delivery vectors and the need for ex vivo lymphocyte engineering complicate therapeutic translation."
+      },
+      "solution_criteria": [
+        "Extracts all major domain-specific concepts including CRISPR-Cas9, gene editing mechanisms (NHEJ, HDR), technical variants (eSpCas9, SpCas9-HF1, base editing, prime editing), and clinical applications as distinct topics",
+        "Recognizes and separates specialized terminology (sgRNA, PAM, DSBs, off-target effects, immunogenicity) as relevant topics",
+        "Returns output as a JSON array of strings with no extraneous fields or explanatory text"
+      ],
+      "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+      "scenario": "Testing with a highly technical STEM passage containing jargon, acronyms, and specialized terminology to ensure domain-specific concepts are correctly identified as distinct topics"
+    },
+    "score": 9,
+    "reasoning": "The solution meets all mandatory requirements: it provides a valid JSON array of strings with no extraneous fields or explanatory text. It successfully extracts all major domain-specific concepts and specialized terminology from the passage. The two inferred topics ('Gene therapy delivery' and 'Specificity in gene editing') are minor deviations from strict extraction, as the task asks to 'extract topics out of a passage' which typically implies direct extraction rather than inference. However, these additions are reasonable interpretations of concepts discussed in the text and don't significantly detract from the overall quality. The solution demonstrates strong understanding of the domain and provides comprehensive coverage of the scholarly content."
+  },
+  {
+    "output": "```json\n[\n  \"Renaissance\",\n  \"Humanism\",\n  \"Classical texts\",\n  \"Medieval theology\",\n  \"Italian cultural revival\",\n  \"Fourteenth century\",\n  \"Nation-states\",\n  \"Political patronage\",\n  \"Arts patronage\",\n  \"Political power\",\n  \"Governance legitimization\",\n  \"Printing technology\",\n  \"Knowledge democratization\",\n  \"Intellectual circulation\",\n  \"Religious reformation\",\n  \"Scientific inquiry\",\n  \"Ecclesiastical authority\",\n  \"Secular intellectual movements\",\n  \"European society transformation\",\n  \"Seventeenth century\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "The Renaissance witnessed a profound transformation in European intellectual and artistic life, as humanist scholars recovered classical texts that fundamentally challenged medieval theological frameworks. This cultural revival, originating in Italy during the fourteenth century, became intertwined with emerging nation-states' political ambitions, as patronage of the arts served as both a display of power and a mechanism for legitimizing new forms of governance. The spread of printing technology democratized access to knowledge, enabling the circulation of ideas that would later fuel religious reformation and scientific inquiry, while simultaneously creating tensions between traditional ecclesiastical authority and secular intellectual movements that reshaped European society through the seventeenth century."
+      },
+      "solution_criteria": [
+        "Extracts all major topics without redundant duplication (e.g., 'Renaissance' and 'cultural revival' should not both appear as separate topics)",
+        "Identifies distinct themes across humanities domains (intellectual, artistic, political, technological, religious) without over-segmenting related concepts",
+        "Returns output as a valid JSON array of strings"
+      ],
+      "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+      "scenario": "Testing with a humanities passage containing overlapping themes (e.g., history, politics, culture) to verify accurate topic extraction without over-segmentation"
+    },
+    "score": 6,
+    "reasoning": "The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the passage with no extra commentary. However, it violates the secondary criterion about avoiding redundant duplication. The criteria explicitly state that related concepts should not both appear as separate topics (using 'Renaissance' and 'cultural revival' as an example). The solution includes several pairs of closely related concepts that should have been consolidated: patronage concepts, power/governance concepts, and knowledge circulation concepts. While the solution demonstrates good topical coverage, the redundancy issues prevent it from fully meeting the secondary criteria regarding non-duplication and appropriate segmentation."
+  },
+  {
+    "output": "```json\n[\n  \"Gig economy\",\n  \"Digital platforms\",\n  \"Independent contractors\",\n  \"Labor policy\",\n  \"Employment relationships\",\n  \"Entrepreneurial opportunity\",\n  \"Labor market fragmentation\",\n  \"Income inequality\",\n  \"Social safety nets\",\n  \"Tax revenue collection\",\n  \"Worker protections\",\n  \"Minimum wage guarantees\",\n  \"Benefits access\",\n  \"Workplace safety standards\",\n  \"Job flexibility\",\n  \"Regulatory burden\",\n  \"Platform companies\",\n  \"Gig worker earnings\",\n  \"Job satisfaction\",\n  \"Autonomy\",\n  \"Economic efficiency\",\n  \"Social welfare\",\n  \"Government regulation\",\n  \"Post-industrial economies\",\n  \"Vulnerable populations\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "The rise of the gig economy has created significant challenges for traditional labor policy frameworks, as independent contractors operating through digital platforms generate substantial economic value while existing outside conventional employment relationships. Economists debate whether gig work represents genuine entrepreneurial opportunity or labor market fragmentation, with implications for income inequality, social safety nets, and tax revenue collection. Meanwhile, policymakers face pressure to balance worker protections\u2014including minimum wage guarantees, benefits access, and workplace safety standards\u2014against platform companies' arguments that regulatory burdens would reduce flexibility and competitiveness. Recent studies reveal that gig workers earn 20-30% less than traditional employees in comparable roles, yet often report higher job satisfaction due to autonomy. This tension between economic efficiency and social welfare reflects broader questions about the role of government in regulating emerging business models and protecting vulnerable populations in post-industrial economies."
+      },
+      "solution_criteria": [
+        "Identifies all major topics spanning labor economics, policy, and platform business models",
+        "Distinguishes between related but distinct concepts (e.g., gig economy as separate from income inequality)",
+        "Returns output as a valid JSON array of strings"
+      ],
+      "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+      "scenario": "Testing with a multi-disciplinary passage that spans social science, economics, and policy to assess how the prompt handles topics that cross traditional academic boundaries"
+    },
+    "score": 9,
+    "reasoning": "The solution fully satisfies all mandatory requirements: it is a valid JSON array containing only strings with topics, no extra commentary, and nothing else in the response. It comprehensively identifies major topics spanning the three required domains (labor economics, policy, platform business models) and effectively distinguishes between related concepts. The extraction is thorough and well-organized. While a few entries are slightly more descriptive than purely topical, this is a minor issue that does not violate any stated criteria and reflects reasonable interpretive choices about what constitutes a 'topic' in the passage."
+  },
+  {
+    "output": "```json\n[\n  \"Machine learning\",\n  \"Natural language processing\",\n  \"Transformer architectures\",\n  \"Attention mechanisms\",\n  \"Distributed representations\",\n  \"Large language models\",\n  \"Data privacy\",\n  \"Environmental costs\",\n  \"AI training\",\n  \"Automation of cognitive tasks\",\n  \"AI ethics\",\n  \"Information encoding\",\n  \"Computational linguistics\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "Recent advances in machine learning have revolutionized natural language processing, enabling systems to understand context and nuance in ways previously thought impossible. While transformer architectures explicitly dominate current research, the underlying principles of attention mechanisms and distributed representations reflect deeper insights into how information can be encoded computationally. The proliferation of large language models has sparked debate about data privacy, environmental costs of training, and the societal implications of automating cognitive tasks\u2014concerns that permeate contemporary AI ethics discussions without always being directly articulated in technical papers."
+      },
+      "solution_criteria": [
+        "Extracts explicit topics directly mentioned in the passage (e.g., 'machine learning', 'natural language processing', 'transformer architectures')",
+        "Distinguishes between explicit topics and implicit conceptual themes (e.g., recognizes 'attention mechanisms' and 'distributed representations' as underlying concepts rather than primary topics)",
+        "Returns results as a valid JSON array of strings",
+        "Avoids conflating implicit themes with explicit topics in the final extraction"
+      ],
+      "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+      "scenario": "Testing with a passage containing implicit vs explicit topics to verify the prompt distinguishes between directly stated topics and underlying conceptual themes"
+    },
+    "score": 6,
+    "reasoning": "The solution meets all mandatory requirements: it is a valid JSON array of strings with only topic names and no extra commentary. However, it violates the secondary criterion requiring distinction between explicit topics and implicit conceptual themes. The passage explicitly mentions machine learning, NLP, transformer architectures, attention mechanisms, distributed representations, large language models, data privacy, environmental costs, and AI ethics. Items like 'Computational linguistics,' 'Information encoding,' and 'AI training' are either inferred or mentioned only incidentally rather than as primary topics. The solution over-extracts by treating implicit themes and passing references as explicit topics."
+  }
+]

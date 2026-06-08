@@ -1,17 +1,50 @@
 [
   {
-    "task": "Write a Python function that takes an AWS ARN string and extracts the resource type. For example, 'arn:aws:ec2:us-east-1:123456789012:instance/i-1234567890abcdef0' should return 'instance'.",
-    "format": "python",
-    "solution_criteria": "Function should correctly parse standard AWS ARN format (arn:partition:service:region:account-id:resource-type/resource-id or arn:partition:service:region:account-id:resource-type:resource-id). Should handle ARNs with colons and slashes as separators. Should handle edge cases like ARNs without resource IDs, ARNs with multiple colons in resource section. Should return None or raise appropriate error for invalid ARNs."
+    "prompt_inputs": {
+      "height": "178",
+      "weight": "85",
+      "goal": "muscle gain and strength development",
+      "restrictions": "none"
+    },
+    "solution_criteria": [
+      "Meal plan covers a full 24-hour period with 4-5 meals",
+      "Protein distributed across all meals (minimum 25g per meal)",
+      "Total daily calories and macros support muscle gain for an 85kg strength athlete",
+      "Includes recovery-focused foods (carbs post-workout, protein sources, micronutrient-dense options)"
+    ],
+    "task_description": "Write a compact, concise, 1 day meal plan for a single athlete",
+    "scenario": "Testing with a strength/power athlete (weightlifter) needing elevated protein distribution across meals with caloric density and recovery-focused nutrition"
   },
   {
-    "task": "Create a JSON object representing an AWS IAM policy that allows read-only access to a specific S3 bucket named 'company-logs'. The policy should allow ListBucket and GetObject actions only.",
-    "format": "json",
-    "solution_criteria": "JSON must be valid IAM policy syntax with Version, Statement array. Statement should have Effect: 'Allow', Action array containing s3:ListBucket and s3:GetObject, and Resource specifying the bucket ARN (arn:aws:s3:::company-logs) and objects (arn:aws:s3:::company-logs/*). Should use correct ARN format. ListBucket should apply to bucket resource, GetObject should apply to objects within bucket."
+    "prompt_inputs": {
+      "height": "183 cm",
+      "weight": "78 kg",
+      "goal": "Match day performance and endurance maintenance",
+      "restrictions": "None"
+    },
+    "solution_criteria": [
+      "Meal plan includes 5-6 eating occasions timed around morning training and afternoon match (e.g., pre-training, post-training, pre-match, during-match hydration)",
+      "Macronutrient balance supports endurance with adequate carbohydrates (55-60% of calories) and protein (1.6g per kg bodyweight) for recovery",
+      "Includes specific hydration strategy with electrolyte recommendations for variable training intensity and 90-minute match",
+      "Plan is compact and concise (fits on one page, under 400 words)"
+    ],
+    "task_description": "Write a compact, concise, 1 day meal plan for a single athlete",
+    "scenario": "Testing with a sport with dual demands (soccer player) requiring balanced macros, hydration focus, and meals timed around variable training intensity with afternoon match preparation"
   },
   {
-    "task": "Write a regular expression that validates AWS Access Key IDs. AWS Access Key IDs are exactly 20 characters long and consist of uppercase letters A-Z and numbers 2-7, always starting with 'AKIA' for standard IAM user keys.",
-    "format": "regex",
-    "solution_criteria": "Regex must match strings that start with 'AKIA' followed by exactly 16 characters from the set [A-Z0-9]. Total length must be exactly 20 characters. Should not match strings shorter or longer than 20 characters. Should not match if prefix is not 'AKIA'. Should not match if contains lowercase letters or special characters. Should use anchors to ensure full string match."
+    "prompt_inputs": {
+      "height": "178 cm",
+      "weight": "68 kg",
+      "goal": "marathon training - high endurance performance with carbohydrate loading",
+      "restrictions": "none"
+    },
+    "solution_criteria": [
+      "Meal plan covers all meals for one full day (breakfast, lunch, dinner, snacks)",
+      "Emphasizes high carbohydrate intake (60-70% of calories) with moderate protein (1.2-1.6g per kg body weight)",
+      "Includes strategic timing of meals/snacks around a training session (pre/during/post workout nutrition)",
+      "Plan is compact and concise (fits on one page or brief format)"
+    ],
+    "task_description": "Write a compact, concise, 1 day meal plan for a single athlete",
+    "scenario": "Testing with a high-performance endurance athlete (marathon runner) requiring high carbohydrate and moderate protein intake with specific timing around training sessions"
   }
 ]

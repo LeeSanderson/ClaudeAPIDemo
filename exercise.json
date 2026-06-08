@@ -1,0 +1,63 @@
+[
+  {
+    "prompt_inputs": {
+      "content": "This study examines the role of mitochondrial dysfunction in neurodegenerative disease progression. Mitochondria are essential cellular organelles responsible for ATP production through oxidative phosphorylation. Impaired mitochondrial function leads to reduced energy availability and increased reactive oxygen species generation, both of which contribute to neuronal death in conditions such as Parkinson's disease and Alzheimer's disease."
+    },
+    "solution_criteria": [
+      "Output is a JSON array of strings",
+      "Array contains exactly one or two topics (reflecting the single-topic nature of the passage)",
+      "Topics extracted are relevant to the passage content"
+    ],
+    "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+    "scenario": "Testing with a brief, single-topic passage to verify the prompt handles minimal input and returns appropriately sized output"
+  },
+  {
+    "prompt_inputs": {
+      "content": "The Renaissance witnessed a profound transformation in European intellectual and artistic life, as humanist scholars recovered classical texts that fundamentally challenged medieval theological frameworks. This cultural revival, originating in Italy during the fourteenth century, became intertwined with emerging nation-states' political ambitions, as patronage of the arts served as both a display of power and a mechanism for legitimizing new forms of governance. The spread of printing technology democratized access to knowledge, enabling the circulation of ideas that would later fuel religious reformation and scientific inquiry, while simultaneously creating tensions between traditional ecclesiastical authority and secular intellectual movements that reshaped European society through the seventeenth century."
+    },
+    "solution_criteria": [
+      "Extracts all major topics without redundant duplication (e.g., 'Renaissance' and 'cultural revival' should not both appear as separate topics)",
+      "Identifies distinct themes across humanities domains (intellectual, artistic, political, technological, religious) without over-segmenting related concepts",
+      "Returns output as a valid JSON array of strings"
+    ],
+    "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+    "scenario": "Testing with a humanities passage containing overlapping themes (e.g., history, politics, culture) to verify accurate topic extraction without over-segmentation"
+  },
+  {
+    "prompt_inputs": {
+      "content": "Recent advances in CRISPR-Cas9 gene editing have demonstrated remarkable efficacy in treating monogenic disorders through precise DNA strand breaks at target loci. The mechanism involves sgRNA-guided nuclease activity that generates double-strand breaks (DSBs), subsequently repaired via non-homologous end joining (NHEJ) or homology-directed repair (HDR) pathways. Off-target effects remain a critical limitation, with whole-genome sequencing analyses revealing unintended mutations at genomic regions with high sequence homology. Novel PAM variants and high-fidelity Cas9 variants (eSpCas9, SpCas9-HF1) have improved specificity metrics, while base editing and prime editing approaches circumvent DSB formation entirely. Clinical applications in \u03b2-thalassemia and sickle cell disease show promising results, though immunogenicity concerns regarding adeno-associated virus (AAV) delivery vectors and the need for ex vivo lymphocyte engineering complicate therapeutic translation."
+    },
+    "solution_criteria": [
+      "Extracts all major domain-specific concepts including CRISPR-Cas9, gene editing mechanisms (NHEJ, HDR), technical variants (eSpCas9, SpCas9-HF1, base editing, prime editing), and clinical applications as distinct topics",
+      "Recognizes and separates specialized terminology (sgRNA, PAM, DSBs, off-target effects, immunogenicity) as relevant topics",
+      "Returns output as a JSON array of strings with no extraneous fields or explanatory text"
+    ],
+    "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+    "scenario": "Testing with a highly technical STEM passage containing jargon, acronyms, and specialized terminology to ensure domain-specific concepts are correctly identified as distinct topics"
+  },
+  {
+    "prompt_inputs": {
+      "content": "Recent advances in machine learning have revolutionized natural language processing, enabling systems to understand context and nuance in ways previously thought impossible. While transformer architectures explicitly dominate current research, the underlying principles of attention mechanisms and distributed representations reflect deeper insights into how information can be encoded computationally. The proliferation of large language models has sparked debate about data privacy, environmental costs of training, and the societal implications of automating cognitive tasks\u2014concerns that permeate contemporary AI ethics discussions without always being directly articulated in technical papers."
+    },
+    "solution_criteria": [
+      "Extracts explicit topics directly mentioned in the passage (e.g., 'machine learning', 'natural language processing', 'transformer architectures')",
+      "Distinguishes between explicit topics and implicit conceptual themes (e.g., recognizes 'attention mechanisms' and 'distributed representations' as underlying concepts rather than primary topics)",
+      "Returns results as a valid JSON array of strings",
+      "Avoids conflating implicit themes with explicit topics in the final extraction"
+    ],
+    "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+    "scenario": "Testing with a passage containing implicit vs explicit topics to verify the prompt distinguishes between directly stated topics and underlying conceptual themes"
+  },
+  {
+    "prompt_inputs": {
+      "content": "The rise of the gig economy has created significant challenges for traditional labor policy frameworks, as independent contractors operating through digital platforms generate substantial economic value while existing outside conventional employment relationships. Economists debate whether gig work represents genuine entrepreneurial opportunity or labor market fragmentation, with implications for income inequality, social safety nets, and tax revenue collection. Meanwhile, policymakers face pressure to balance worker protections\u2014including minimum wage guarantees, benefits access, and workplace safety standards\u2014against platform companies' arguments that regulatory burdens would reduce flexibility and competitiveness. Recent studies reveal that gig workers earn 20-30% less than traditional employees in comparable roles, yet often report higher job satisfaction due to autonomy. This tension between economic efficiency and social welfare reflects broader questions about the role of government in regulating emerging business models and protecting vulnerable populations in post-industrial economies."
+    },
+    "solution_criteria": [
+      "Identifies all major topics spanning labor economics, policy, and platform business models",
+      "Distinguishes between related but distinct concepts (e.g., gig economy as separate from income inequality)",
+      "Returns output as a valid JSON array of strings"
+    ],
+    "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+    "scenario": "Testing with a multi-disciplinary passage that spans social science, economics, and policy to assess how the prompt handles topics that cross traditional academic boundaries"
+  }
+]
