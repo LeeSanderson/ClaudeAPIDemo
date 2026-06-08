@@ -117,11 +117,11 @@
                 </div>
                 <div class="stat-box">
                     <div>Average Score</div>
-                    <div class="stat-value">6.6 / 10</div>
+                    <div class="stat-value">7.0 / 10</div>
                 </div>
                 <div class="stat-box">
                     <div>Pass Rate (≥7)</div>
-                    <div class="stat-value">40.0%</div>
+                    <div class="stat-value">60.0%</div>
                 </div>
             </div>
         </div>
@@ -150,53 +150,16 @@
   "Mitochondria",
   "ATP production",
   "Oxidative phosphorylation",
-  "Energy metabolism",
   "Reactive oxygen species",
   "Neuronal death",
   "Parkinson's disease",
   "Alzheimer's disease",
-  "Cellular organelles",
-  "Oxidative stress"
+  "Energy metabolism",
+  "Cellular organelles"
 ]
 ```</pre></td>
                 <td class="score-col"><span class="score score-low">3</span></td>
-                <td class="reasoning">The solution meets the mandatory requirement of being a JSON array of strings with clean topic formatting and no extra commentary. However, it critically fails the secondary criterion requiring 'exactly one or two topics (reflecting the single-topic nature of the passage).' The passage has a clear primary focus on mitochondrial dysfunction in neurodegenerative disease, which should be represented by 1-2 main topics, not 12. The solution extracts granular subtopics and mechanisms rather than identifying the core themes. This represents a fundamental misunderstanding of the task's intent to extract high-level topics rather than enumerate all mentioned concepts.</td>
-            </tr>
-        
-            <tr>
-                <td>Testing with a highly technical STEM passage containing jargon, acronyms, and specialized terminology to ensure domain-specific concepts are correctly identified as distinct topics</td>
-                <td class="prompt-inputs"><strong>content:</strong> Recent advances in CRISPR-Cas9 gene editing have demonstrated remarkable efficacy in treating monogenic disorders through precise DNA strand breaks at target loci. The mechanism involves sgRNA-guided nuclease activity that generates double-strand breaks (DSBs), subsequently repaired via non-homologous end joining (NHEJ) or homology-directed repair (HDR) pathways. Off-target effects remain a critical limitation, with whole-genome sequencing analyses revealing unintended mutations at genomic regions with high sequence homology. Novel PAM variants and high-fidelity Cas9 variants (eSpCas9, SpCas9-HF1) have improved specificity metrics, while base editing and prime editing approaches circumvent DSB formation entirely. Clinical applications in β-thalassemia and sickle cell disease show promising results, though immunogenicity concerns regarding adeno-associated virus (AAV) delivery vectors and the need for ex vivo lymphocyte engineering complicate therapeutic translation.</td>
-                <td class="criteria">• Extracts all major domain-specific concepts including CRISPR-Cas9, gene editing mechanisms (NHEJ, HDR), technical variants (eSpCas9, SpCas9-HF1, base editing, prime editing), and clinical applications as distinct topics<br>• Recognizes and separates specialized terminology (sgRNA, PAM, DSBs, off-target effects, immunogenicity) as relevant topics<br>• Returns output as a JSON array of strings with no extraneous fields or explanatory text</td>
-                <td class="output"><pre>```json
-[
-  "CRISPR-Cas9 gene editing",
-  "Monogenic disorders",
-  "DNA strand breaks",
-  "sgRNA-guided nuclease activity",
-  "Double-strand breaks (DSBs)",
-  "Non-homologous end joining (NHEJ)",
-  "Homology-directed repair (HDR)",
-  "Off-target effects",
-  "Whole-genome sequencing",
-  "Sequence homology",
-  "PAM variants",
-  "High-fidelity Cas9 variants",
-  "eSpCas9",
-  "SpCas9-HF1",
-  "Base editing",
-  "Prime editing",
-  "β-thalassemia",
-  "Sickle cell disease",
-  "Immunogenicity",
-  "Adeno-associated virus (AAV) vectors",
-  "Ex vivo lymphocyte engineering",
-  "Gene therapy delivery",
-  "Therapeutic translation",
-  "Specificity in gene editing"
-]
-```</pre></td>
-                <td class="score-col"><span class="score score-high">9</span></td>
-                <td class="reasoning">The solution meets all mandatory requirements: it provides a valid JSON array of strings with no extraneous fields or explanatory text. It successfully extracts all major domain-specific concepts and specialized terminology from the passage. The two inferred topics ('Gene therapy delivery' and 'Specificity in gene editing') are minor deviations from strict extraction, as the task asks to 'extract topics out of a passage' which typically implies direct extraction rather than inference. However, these additions are reasonable interpretations of concepts discussed in the text and don't significantly detract from the overall quality. The solution demonstrates strong understanding of the domain and provides comprehensive coverage of the scholarly content.</td>
+                <td class="reasoning">The solution violates a mandatory requirement by failing to meet the secondary criteria that explicitly states 'Array contains exactly one or two topics (reflecting the single-topic nature of the passage).' The passage has a clear singular focus on mitochondrial dysfunction in neurodegenerative disease progression. While the solution correctly formats the output as a JSON array of strings with no extra commentary, the extraction of 11 topics instead of 1-2 represents a fundamental misunderstanding of the task requirements. The passage is cohesive around one main theme, not 11 separate topics.</td>
             </tr>
         
             <tr>
@@ -214,21 +177,80 @@
   "Nation-states",
   "Political patronage",
   "Arts patronage",
-  "Political power",
+  "Power display",
   "Governance legitimization",
   "Printing technology",
   "Knowledge democratization",
-  "Intellectual circulation",
+  "Idea circulation",
   "Religious reformation",
   "Scientific inquiry",
   "Ecclesiastical authority",
   "Secular intellectual movements",
-  "European society transformation",
-  "Seventeenth century"
+  "European intellectual transformation",
+  "European artistic transformation",
+  "Authority tensions"
 ]
 ```</pre></td>
                 <td class="score-col"><span class="score score-medium">6</span></td>
-                <td class="reasoning">The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the passage with no extra commentary. However, it violates the secondary criterion about avoiding redundant duplication. The criteria explicitly state that related concepts should not both appear as separate topics (using 'Renaissance' and 'cultural revival' as an example). The solution includes several pairs of closely related concepts that should have been consolidated: patronage concepts, power/governance concepts, and knowledge circulation concepts. While the solution demonstrates good topical coverage, the redundancy issues prevent it from fully meeting the secondary criteria regarding non-duplication and appropriate segmentation.</td>
+                <td class="reasoning">The solution meets all mandatory requirements: it is valid JSON, contains only topic strings without commentary, and includes the array alone. However, it violates the secondary criterion about avoiding redundant duplication and over-segmentation. The extraction includes several pairs of closely related concepts that should have been consolidated (e.g., 'Arts patronage' + 'Power display' + 'Governance legitimization' represent a single theme of patronage as political tool). The solution extracts 21 topics when a more refined approach would consolidate related concepts into 14-16 distinct themes. This represents a meaningful deficiency in meeting the stated criteria about avoiding redundancy and identifying distinct themes without over-segmentation.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a highly technical STEM passage containing jargon, acronyms, and specialized terminology to ensure domain-specific concepts are correctly identified as distinct topics</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent advances in CRISPR-Cas9 gene editing have demonstrated remarkable efficacy in treating monogenic disorders through precise DNA strand breaks at target loci. The mechanism involves sgRNA-guided nuclease activity that generates double-strand breaks (DSBs), subsequently repaired via non-homologous end joining (NHEJ) or homology-directed repair (HDR) pathways. Off-target effects remain a critical limitation, with whole-genome sequencing analyses revealing unintended mutations at genomic regions with high sequence homology. Novel PAM variants and high-fidelity Cas9 variants (eSpCas9, SpCas9-HF1) have improved specificity metrics, while base editing and prime editing approaches circumvent DSB formation entirely. Clinical applications in β-thalassemia and sickle cell disease show promising results, though immunogenicity concerns regarding adeno-associated virus (AAV) delivery vectors and the need for ex vivo lymphocyte engineering complicate therapeutic translation.</td>
+                <td class="criteria">• Extracts all major domain-specific concepts including CRISPR-Cas9, gene editing mechanisms (NHEJ, HDR), technical variants (eSpCas9, SpCas9-HF1, base editing, prime editing), and clinical applications as distinct topics<br>• Recognizes and separates specialized terminology (sgRNA, PAM, DSBs, off-target effects, immunogenicity) as relevant topics<br>• Returns output as a JSON array of strings with no extraneous fields or explanatory text</td>
+                <td class="output"><pre>```json
+[
+  "CRISPR-Cas9 gene editing",
+  "Monogenic disorders",
+  "DNA strand breaks",
+  "sgRNA-guided nuclease activity",
+  "Double-strand breaks (DSBs)",
+  "Non-homologous end joining (NHEJ)",
+  "Homology-directed repair (HDR)",
+  "Off-target effects",
+  "Whole-genome sequencing",
+  "Unintended mutations",
+  "PAM variants",
+  "High-fidelity Cas9 variants",
+  "eSpCas9",
+  "SpCas9-HF1",
+  "Base editing",
+  "Prime editing",
+  "β-thalassemia",
+  "Sickle cell disease",
+  "Immunogenicity",
+  "Adeno-associated virus (AAV) delivery vectors",
+  "Ex vivo lymphocyte engineering",
+  "Therapeutic translation"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">10</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it contains a valid JSON array of strings, each entry is a topic without extra commentary, and the response contains only the JSON array. It also meets the secondary criteria by extracting all major domain-specific concepts, recognizing specialized terminology, and maintaining proper formatting. The topic selection is thorough and appropriate for a scholarly article on CRISPR gene editing. Minor redundancy between related concepts (DNA strand breaks vs DSBs) is negligible and doesn't detract from overall quality.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a passage containing implicit vs explicit topics to verify the prompt distinguishes between directly stated topics and underlying conceptual themes</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent advances in machine learning have revolutionized natural language processing, enabling systems to understand context and nuance in ways previously thought impossible. While transformer architectures explicitly dominate current research, the underlying principles of attention mechanisms and distributed representations reflect deeper insights into how information can be encoded computationally. The proliferation of large language models has sparked debate about data privacy, environmental costs of training, and the societal implications of automating cognitive tasks—concerns that permeate contemporary AI ethics discussions without always being directly articulated in technical papers.</td>
+                <td class="criteria">• Extracts explicit topics directly mentioned in the passage (e.g., 'machine learning', 'natural language processing', 'transformer architectures')<br>• Distinguishes between explicit topics and implicit conceptual themes (e.g., recognizes 'attention mechanisms' and 'distributed representations' as underlying concepts rather than primary topics)<br>• Returns results as a valid JSON array of strings<br>• Avoids conflating implicit themes with explicit topics in the final extraction</td>
+                <td class="output"><pre>```json
+[
+  "Machine learning",
+  "Natural language processing",
+  "Transformer architectures",
+  "Attention mechanisms",
+  "Distributed representations",
+  "Large language models",
+  "Data privacy",
+  "Environmental costs of training",
+  "Automation of cognitive tasks",
+  "AI ethics",
+  "Information encoding",
+  "Computational linguistics"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-medium">7</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it is a valid JSON array of strings with only topic names and no commentary. Regarding secondary criteria, it successfully distinguishes most explicit topics from implicit themes and extracts the primary subjects well. However, it violates the criterion to 'avoid conflating implicit themes with explicit topics' by including 'Computational linguistics' (not mentioned) and 'Information encoding' (mentioned only descriptively). The extraction is approximately 83% accurate to the passage content, with 2 clear errors out of 12 items.</td>
             </tr>
         
             <tr>
@@ -260,37 +282,12 @@
   "Economic efficiency",
   "Social welfare",
   "Government regulation",
-  "Post-industrial economies",
-  "Vulnerable populations"
+  "Vulnerable populations",
+  "Post-industrial economies"
 ]
 ```</pre></td>
                 <td class="score-col"><span class="score score-high">9</span></td>
-                <td class="reasoning">The solution fully satisfies all mandatory requirements: it is a valid JSON array containing only strings with topics, no extra commentary, and nothing else in the response. It comprehensively identifies major topics spanning the three required domains (labor economics, policy, platform business models) and effectively distinguishes between related concepts. The extraction is thorough and well-organized. While a few entries are slightly more descriptive than purely topical, this is a minor issue that does not violate any stated criteria and reflects reasonable interpretive choices about what constitutes a 'topic' in the passage.</td>
-            </tr>
-        
-            <tr>
-                <td>Testing with a passage containing implicit vs explicit topics to verify the prompt distinguishes between directly stated topics and underlying conceptual themes</td>
-                <td class="prompt-inputs"><strong>content:</strong> Recent advances in machine learning have revolutionized natural language processing, enabling systems to understand context and nuance in ways previously thought impossible. While transformer architectures explicitly dominate current research, the underlying principles of attention mechanisms and distributed representations reflect deeper insights into how information can be encoded computationally. The proliferation of large language models has sparked debate about data privacy, environmental costs of training, and the societal implications of automating cognitive tasks—concerns that permeate contemporary AI ethics discussions without always being directly articulated in technical papers.</td>
-                <td class="criteria">• Extracts explicit topics directly mentioned in the passage (e.g., 'machine learning', 'natural language processing', 'transformer architectures')<br>• Distinguishes between explicit topics and implicit conceptual themes (e.g., recognizes 'attention mechanisms' and 'distributed representations' as underlying concepts rather than primary topics)<br>• Returns results as a valid JSON array of strings<br>• Avoids conflating implicit themes with explicit topics in the final extraction</td>
-                <td class="output"><pre>```json
-[
-  "Machine learning",
-  "Natural language processing",
-  "Transformer architectures",
-  "Attention mechanisms",
-  "Distributed representations",
-  "Large language models",
-  "Data privacy",
-  "Environmental costs",
-  "AI training",
-  "Automation of cognitive tasks",
-  "AI ethics",
-  "Information encoding",
-  "Computational linguistics"
-]
-```</pre></td>
-                <td class="score-col"><span class="score score-medium">6</span></td>
-                <td class="reasoning">The solution meets all mandatory requirements: it is a valid JSON array of strings with only topic names and no extra commentary. However, it violates the secondary criterion requiring distinction between explicit topics and implicit conceptual themes. The passage explicitly mentions machine learning, NLP, transformer architectures, attention mechanisms, distributed representations, large language models, data privacy, environmental costs, and AI ethics. Items like 'Computational linguistics,' 'Information encoding,' and 'AI training' are either inferred or mentioned only incidentally rather than as primary topics. The solution over-extracts by treating implicit themes and passing references as explicit topics.</td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it is a valid JSON array containing only strings with topic names and no extra commentary. It comprehensively identifies major topics spanning the three required domains (labor economics, policy, platform business models) and effectively distinguishes between related concepts. The extraction is thorough and well-organized. While there are minor opportunities to consolidate some granular topics for greater elegance, this does not violate any stated criteria and represents a reasonable interpretation of topic extraction at a detailed level. The solution meets both mandatory and secondary criteria effectively.</td>
             </tr>
         
             </tbody>
