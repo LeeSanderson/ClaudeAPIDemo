@@ -1,0 +1,142 @@
+
+====================================================================================================
+                              CHURN ANALYSIS - EXECUTIVE SUMMARY
+====================================================================================================
+
+📊 DATASET OVERVIEW
+----------------------------------------------------------------------------------------------------
+   Total Customers Analyzed: 500
+   Overall Churn Rate: 38.60%
+   - Churned: 193 customers
+   - Retained: 307 customers
+
+====================================================================================================
+🎯 MAJOR CHURN DRIVERS (Ranked by Impact)
+====================================================================================================
+
+1️⃣  LOW ENGAGEMENT (Viewing Activity)
+----------------------------------------------------------------------------------------------------
+   📉 Total Viewing Hours: Churned customers watch 16.6 hours LESS per month
+      • Churned avg: 66.6 hours
+      • Retained avg: 83.2 hours
+      • Impact: 20.0% reduction
+      • Statistical significance: p < 0.001 ✓✓✓
+
+2️⃣  SHALLOW ENGAGEMENT (Session Quality)
+----------------------------------------------------------------------------------------------------
+   ⏱️  Average Session Duration: Churned customers have 8.3 minutes SHORTER sessions
+      • Churned avg: 49.4 minutes
+      • Retained avg: 57.8 minutes
+      • Impact: 14.4% reduction
+      • Statistical significance: p < 0.001 ✓✓✓
+
+3️⃣  LIMITED CONTENT EXPLORATION
+----------------------------------------------------------------------------------------------------
+   🎬 Unique Titles Watched: Churned customers explore 4.3 FEWER unique titles
+      • Churned avg: 19.5 titles
+      • Retained avg: 23.7 titles
+      • Impact: 18.1% reduction
+      • Statistical significance: p < 0.001 ✓✓✓
+
+4️⃣  REDUCED BINGE-WATCHING BEHAVIOR
+----------------------------------------------------------------------------------------------------
+   📺 Binge-Watching Sessions: Churned customers have 1.5 FEWER binge sessions
+      • Churned avg: 6.2 sessions
+      • Retained avg: 7.7 sessions
+      • Impact: 19.7% reduction
+      • Statistical significance: p < 0.001 ✓✓✓
+
+5️⃣  HIGH CUSTOMER SERVICE INTERACTIONS (Red Flag!)
+----------------------------------------------------------------------------------------------------
+   🚨 Customer Service Interactions: Churned customers contact support 0.7 times MORE
+      • Churned avg: 3.2 interactions
+      • Retained avg: 2.5 interactions
+      • Impact: 27.7% increase
+      • Statistical significance: p < 0.001 ✓✓✓
+
+====================================================================================================
+💰 SUBSCRIPTION TIER ANALYSIS
+====================================================================================================
+
+   Basic        tier:  43.5% churn rate  |   90/207 customers  |  🔴 HIGH RISK
+   Standard     tier:  39.5% churn rate  |   83/210 customers  |  🟡 MODERATE
+   Premium      tier:  24.1% churn rate  |   20/ 83 customers  |  🟢 LOW RISK
+
+====================================================================================================
+🎭 GENRE PREFERENCES & CHURN
+====================================================================================================
+
+   Top 3 Highest Churn Genres:
+   1. Horror          -  52.3% churn rate (44 total customers)
+   2. Thriller        -  48.3% churn rate (29 total customers)
+   3. Action          -  44.6% churn rate (74 total customers)
+
+   Top 3 Lowest Churn Genres:
+   1. Drama           -  35.3% churn rate (102 total customers)
+   2. Comedy          -  33.0% churn rate (100 total customers)
+   3. Documentary     -  25.9% churn rate (54 total customers)
+
+====================================================================================================
+💡 KEY INSIGHTS & RECOMMENDATIONS
+====================================================================================================
+
+🔍 PRIMARY CHURN PATTERN:
+   → Churned customers exhibit SIGNIFICANTLY LOWER engagement across ALL metrics
+   → This suggests dissatisfaction with content or poor user experience
+
+📋 STRATEGIC RECOMMENDATIONS:
+
+   1. EARLY WARNING SYSTEM
+      • Monitor customers with <70 viewing hours/month
+      • Flag users with declining session duration trends
+      • Alert when binge-watching sessions drop below 6/month
+
+   2. PROACTIVE ENGAGEMENT
+      • Send personalized content recommendations to low-engagement users
+      • Implement re-engagement campaigns for users watching <20 unique titles
+      • Create curated playlists to encourage content discovery
+
+   3. CUSTOMER SERVICE IMPROVEMENT
+      • Investigate why churned customers needed MORE support
+      • Address common issues proactively before they escalate
+      • Implement feedback loops after CS interactions
+
+   4. TIER-SPECIFIC STRATEGIES
+      • Basic tier: Highest churn (43.5%) - consider better value proposition
+      • Premium tier: Lowest churn (24.1%) - identify what works and replicate
+      • Offer promotional upgrades to Standard/Premium for at-risk Basic users
+
+   5. CONTENT STRATEGY
+      • Horror & Thriller genres show highest churn - expand content library
+      • Documentary & Comedy viewers are more loyal - promote these genres
+      • Improve recommendation algorithms for high-churn genres
+
+====================================================================================================
+📈 EXPECTED IMPACT
+====================================================================================================
+
+   If we reduce churn by 5 percentage points:
+   • Current churn rate: 38.6%
+   • Target churn rate: 33.6%
+   • Customers retained: ~25 additional customers
+   • Additional annual revenue: $3,525.00
+     (Based on avg monthly cost of $11.75)
+
+====================================================================================================
+✅ CONCLUSION
+====================================================================================================
+
+   The analysis reveals that churn is primarily driven by LOW ENGAGEMENT rather than
+   dissatisfaction with specific features. Customers who churn watch less content, have
+   shorter sessions, and explore fewer titles. This indicates either:
+   • Content not matching their preferences
+   • Poor discovery/recommendation experience
+   • Competition from other platforms
+
+   The high correlation between CS interactions and churn suggests technical issues
+   or service problems may be pushing customers away. Addressing these root causes
+   through improved recommendations, better content, and proactive support can
+   significantly reduce churn rates.
+
+====================================================================================================
+
